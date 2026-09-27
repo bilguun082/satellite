@@ -1,27 +1,38 @@
-# Satellite Image Change Detection
+# Problem Set 01 — Unified Java Application
 
-A modular Java application for detecting and localizing changes between satellite images.
+A single-class modular Java project containing implementations for all three tasks from Problem Set 01:
+1. **Satellite Image Change Detection** (muhold.be / muhold.ki)
+2. **Second-Degree Polynomial Solver** (interactive CLI)
+3. **Generalized Sudoku Checker** ($N^2 \times N^2$ grid, $N \le 6$)
 
 ## GitHub Repository
 **URL:** [https://github.com/bilguun082/satellite](https://github.com/bilguun082/satellite)
 
-## Features & Architectural Constraints
-- **Single Class:** Implemented in `satellite.Satellite`.
-- **Static Methods Only:** All methods are static.
-- **Strict Modularity:** Every method is **<= 6–7 lines of code**.
-- **Unified Coordinate Method:** Single method `findBound(int start, int step, boolean isRow)` determines $x_1, y_1, x_2, y_2$.
-- **Unified Image Reader:** Single method `readImage(BufferedReader reader)` reads both the old and new images.
+## Architectural Constraints
+- **Single Class:** Encapsulated entirely in `satellite.Satellite`.
+- **Static Methods Only:** 30 methods, all `static`.
+- **Method Length Constraint:** Every method is **$\le$ 7 lines of code** (limit: 7–8 lines).
+- **Task 1 Unified Methods:**
+  - `readImage(BufferedReader reader)`: Single method reading both photos.
+  - `findBound(int start, int step, boolean isRow)`: Single parametrized method for $x_1, y_1, x_2, y_2$.
 
-## Quick Start
+## Quick Commands
 ```bash
 # Compile
 javac -d target/classes src/main/java/satellite/Satellite.java
 
-# Run on default input.txt
-java -cp target/classes satellite.Satellite
+# Task 1: Satellite on contest example
+java -cp target/classes satellite.Satellite tests/muhold.be
 
-# Run on any test case
-java -cp target/classes satellite.Satellite tests/test4_sub_rectangle.txt
+# Task 2: Polynomial Solver
+java -cp target/classes satellite.Satellite poly
+
+# Task 3: Sudoku Checker
+java -cp target/classes satellite.Satellite sudoku tests/sudoku_valid.txt
+
+# Run Full Test Suite & Generate Screenshots
+javac -d target/classes -cp target/classes src/test/java/TestRunnerAndVisualizer.java
+java -Djava.awt.headless=true -cp target/classes test.TestRunnerAndVisualizer
 ```
 
-For detailed test reports and screenshots, see [DOCUMENTATION.md](DOCUMENTATION.md).
+See [DOCUMENTATION.md](DOCUMENTATION.md) for full details and visual proof.
